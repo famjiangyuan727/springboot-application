@@ -1,0 +1,221 @@
+{
+	"info": {
+		"_postman_id": "2776458d-b08d-4b8f-8749-12b1f1d4cb84",
+		"name": "TestServices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2995362"
+	},
+	"item": [
+		{
+			"name": "healthCheck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/healthCheck",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"healthCheck"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllUsers/v1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/{{domain}}/getAllUsers/v1?page=0&size=5",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{domain}}",
+						"getAllUsers",
+						"v1"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0",
+							"description": "Defaulted to 0"
+						},
+						{
+							"key": "size",
+							"value": "5",
+							"description": "Defaulted to 10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUsersByName/v1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/{{domain}}/getUsersByName/v1?name=jyfam1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{domain}}",
+						"getUsersByName",
+						"v1"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "jyfam1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createUser/v1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"jyfam1\",\n  \"email\": \"jyfam1234@email.com\", // unique column\n  \"mobileNum\": \"01234567890\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/{{domain}}/createUser/v1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{domain}}",
+						"createUser",
+						"v1"
+					]
+				},
+				"description": "``` json\n{\n  \"name\": \"name\",\n  \"email\": \"email@email.com\", // unique column, duplicate validation applied, email validation applied\n  \"mobileNum\": \"01234567890\" // phone number validation applied\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "getUserById/v1/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/{{domain}}/getUserById/v1/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{domain}}",
+						"getUserById",
+						"v1",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateUser/v1/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"jyfam1-update\",\n  \"email\": \"jyfam123@email.com\", // unique column\n  \"mobileNum\": \"01234567890\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/{{domain}}/updateUser/v1/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{domain}}",
+						"updateUser",
+						"v1",
+						"1"
+					]
+				},
+				"description": "``` json\n{\n  \"name\": \"name\",\n  \"email\": \"email@email.com\", // unique column, duplicate validation applied, email validation applied\n  \"mobileNum\": \"01234567890\" // phone number validation applied\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "getCountry/v1/{countryName}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/{{third_party_domain}}/getCountry/v1/malaysia",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{third_party_domain}}",
+						"getCountry",
+						"v1",
+						"malaysia"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "domain",
+			"value": "userInfo",
+			"type": "string"
+		},
+		{
+			"key": "third_party_domain",
+			"value": "thrid-party-api",
+			"type": "string"
+		}
+	]
+}
